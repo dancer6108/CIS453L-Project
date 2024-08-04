@@ -1,0 +1,17 @@
+.submitter {
+    margin: auto;
+}
+
+form {
+    display: flex;
+}
+
+.submitter form input {
+    margin-left: auto;
+    margin-right: 0.3rem;
+    width: 50%;
+}
+
+.submitter form button {
+    margin-right: auto;
+}

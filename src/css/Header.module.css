@@ -1,0 +1,12 @@
+.headerBacking {
+    background-image: url("../assets/placeholder.png");
+    height: 8rem;
+    display: flex;
+}
+  
+.headerBacking h1 {
+    text-align: right;
+    margin-left: auto;
+    margin-top: auto;
+    padding-right: 2rem;
+}
