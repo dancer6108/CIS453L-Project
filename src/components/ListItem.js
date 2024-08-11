@@ -57,7 +57,7 @@ const ListItem = (props) => {
             {editMode && (
                 <form onSubmit={handleChange}>
                     <input
-                        id="editTextData"
+                        class={classes.editTextData}
                         type='text'
                         onChange={textChangeHandler}
                         value={textData}

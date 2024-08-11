@@ -7,51 +7,28 @@ const TaskSubmitter = (props) => {
 
     const addTaskHandler = (e) => {
         e.preventDefault();
+        setError('');
         if (textData === '') {
-            setError({
-                message: "Blank submissions not accepted."
-            });
+            setError('Blank submissions not accepted.');
             return;
         }
         props.onAddTask(textData);
         setTextData('');
     }
-
-    const textChangeHandler = (e) => {
-        setTextData(e.target.value);
-    }
-
-    const errorHandler = () => {
-        setError(null);
-    }
     
     return (
-        /*
-        <form>
-            <textarea id="formText" placeholder="Add a task..." />
-            <button id="submitButton">Submit</button>
-        </form>
-        */
        <div className={classes.submitter}>
             <form onSubmit={addTaskHandler}>
                 <input
                     id='textDataInput'
                     type='text'
                     value={textData}
-                    onChange={textChangeHandler}
+                    onChange={(e) => setTextData(e.target.value)}
                     placeholder='New ToDo List Item...'
                 />
                 <button type='submit'>Submit</button>
-                {error && (
-                    <p>
-                        {error.message}
-                        {errorHandler}
-                    </p>
-                )}
-                {!error && (
-                    <p></p>
-                )}
             </form>
+            {error ? <div className={classes.errorDiv}><span id='errorMessage'>{error}</span></div> : <div className="errorDiv"><br /></div>}
        </div>
     );
 };

@@ -8,6 +8,7 @@ li {
     width: 80%;
     display: flex;
     flex-direction: row;
+    font-size: large;
 }
   
 .actionButtons {
@@ -35,4 +36,12 @@ span {
 
 .itemDisplay form button {
     margin-left: 1.5rem;
+}
+
+.itemDisplay * button {
+    font-size: 1.05rem;
+}
+
+.editTextData {
+    font-size: large;
 }
