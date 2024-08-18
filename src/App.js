@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Header from './components/Header';
 import TaskSubmitter from './components/TaskSubmitter';
-import TaskList from './components/TaskList';
+import TaskList from './components/TaskListItems';
 
 function App() {
   const [taskList, setTaskList] = useState([]);
@@ -18,22 +18,18 @@ function App() {
     });
   };
 
-  function handleCheck(e) {
-    let isChecked = e.target.checked;
-    if (isChecked)
+  function handleCheck(checked) {
+    if (checked)
       setNumChecked(numChecked + 1);
     else setNumChecked(numChecked - 1);
   }
 
-  function handleDelete(e) {
-    let key = e.target.id;
-    const taskId = key.split("-");
+  function handleDelete(id) {
     let newTaskList = [];
-    taskList.forEach((item) => {
+    taskList.forEach((task) => {
       //For each item in taskList, re-add to taskList unless it matches the id.
-      if (item.key != taskId[0]) {
-        console.log("adding: " + item.id + " != " + taskId[0]);
-        newTaskList.push(item);
+      if (task.key !== id) {
+        newTaskList.push(task);
       }
     })
     setTaskList(newTaskList);
@@ -44,7 +40,7 @@ function App() {
     <div>
       <Header tasksDone={numChecked} tasksNotDone={taskList.length.toString()}/>
       <TaskSubmitter onAddTask={addTaskHandler} />
-      <TaskList listItems={taskList} onChange={e => handleCheck(e)} onClickDelete={e => handleDelete(e)}/>
+      <TaskList taskList={taskList} onCheck={handleCheck} onDelete={handleDelete}/>
     </div>
   );
 }

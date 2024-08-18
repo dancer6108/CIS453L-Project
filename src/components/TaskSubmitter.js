@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import classes from "../css/TaskSubmitter.module.css"
+import Button from "./Button";
+import SubmitImg from '../assets/arrow.png';
 
 const TaskSubmitter = (props) => {
     const [textData, setTextData] = useState('');
@@ -20,15 +22,15 @@ const TaskSubmitter = (props) => {
        <div className={classes.submitter}>
             <form onSubmit={addTaskHandler}>
                 <input
-                    id='textDataInput'
+                    className={classes.textInput}
                     type='text'
                     value={textData}
                     onChange={(e) => setTextData(e.target.value)}
                     placeholder='New ToDo List Item...'
                 />
-                <button type='submit'>Submit</button>
+                <Button type='submit' img={SubmitImg} />
             </form>
-            {error ? <div className={classes.errorDiv}><span id='errorMessage'>{error}</span></div> : <div className="errorDiv"><br /></div>}
+            {error ? <div className={classes.errorDiv}><span>{error}</span></div> : <div className="errorDiv"><br /></div>}
        </div>
     );
 };
