@@ -3,6 +3,7 @@ form {
     align-items: center;
     justify-content: center;
     height: 20%;
+    min-height: 50px;
 }
 
 .textInput {
